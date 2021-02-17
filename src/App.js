@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState, useEffect} from 'react';
+
+import {MainPage} from "./Component/MainPage/MainPage";
+import {randomQuestions} from "./Component/randomQuestionts";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    let [data, setData] = useState(null);
+    let questionsExam;
+
+
+    useEffect(() => {
+        const getData = async () => {
+            let fetchUrl = await fetch('api.json');
+            let dataJSON = await fetchUrl.json();
+            setData(dataJSON);
+        }
+
+        getData();
+
+    }, []);
+
+    if (data) {
+        questionsExam = randomQuestions(data, 5);
+    }
+
+    return (
+        <div className={'App'}>
+            {data && <MainPage questionsExam={questionsExam}/>}
+        </div>
+    );
 }
 
 export default App;
