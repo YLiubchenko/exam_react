@@ -1,67 +1,52 @@
 import React, {useState} from 'react';
-import {CreateExamData} from "./CreateExamData";
-import {CountQuestions} from "../CountQuestions/CountQuestions";
-import {ShowCorrectAnswers} from "../ShowCorrectAnswers/ShowCorrectAnswers";
+import {randomQuestions} from "../js/randomQuestionts";
+import {TestDataPage} from "./TestDataPage";
+import {TestPage} from "./TestPage";
+import {randomKeyMap} from "../js/randomKeyMap";
+import {useSelector} from "react-redux";
+import evaluateMethod from "./evaluationMethod";
 
-export function MainPage({questionsExam}) {
-    const [isFinish, setIsFinish] = useState(false);
-    const [start, setStart] = useState(false);
-    const [step, setStep] = useState(0);
-    let [core, setScore] = useState(0);
-let score = 0;
-    const finishExam = () => {
-        setIsFinish(true);
-    }
+export function MainPage({questions, teacherData, date, data, scoresAll}) {
+    const [questionsExam, setQuestionsExam] = useState(questions);
+    const [isStart, setIsStart] = useState(true);
+    let [testId, setTestId] = useState('');
+    let userId = useSelector(state => state.singIn.userId);
+
+    let {hour, minute} = teacherData;
+    const testDuration = {hours: +hour || 0, minutes: +minute || 0, seconds: 0};
 
     const startExam = () => {
-        setStart(true);
+        setTestId(randomKeyMap());
+        setIsStart(!isStart);
     }
 
-    const testDuration = {hours: 0, minutes: 1, seconds: 0};
-    let limitTime = '';
+    const completeReview = async () => {
+        let arr = randomQuestions(data, teacherData.questionsNumber);
+        setQuestionsExam(arr);
+        setIsStart(!isStart);
+        evaluateMethod(scoresAll, teacherData)
+        const res = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(scoresAll)
+        };
 
-    for (let key in testDuration) {
-        if (testDuration[key]) {
-            limitTime += `${testDuration[key]} ${testDuration[key] > 1 ? key : key.slice(0, -1)} `
-        }
+        const response = await fetch('http://localhost:3333/tests-pages/' + userId, res);
+        const result = await response.json();
     }
 
     return (
         <div>
-            {!start
-                ? <div>
-                    <h2>You can start an exam</h2>
-                    <h4>Time limit: {limitTime}</h4>
-                    <button onClick={() => startExam()}>Start exam</button>
-                </div>
-                : <div>
-                    <aside className={'aside'}>
-                        <div className={'countContainer'}>
-                            <CountQuestions finishExam={finishExam} questionsExam={questionsExam} setStep={setStep}
-                                            step={step} testDuration={testDuration} setIsFinish={setIsFinish}
-                                            isFinish={isFinish}/>
-                            {isFinish &&
-                            <div>
-                                Score: {score}/{questionsExam.length}
-                            </div>
-                            }
-                        </div>
-
-
-                    </aside>
-                    <div className={'questionContainer'}>
-                        <div className={'subject'}>
-                            <h2>Subject</h2>
-                        </div>
-
-
-                        {isFinish
-                            ? <ShowCorrectAnswers questionsExam={questionsExam} isFinish={isFinish} score={score} setScore={setScore}/>
-                            : <CreateExamData questionsExam={questionsExam} isFinish={isFinish} step={step}
-                                              setStep={setStep} finishExam={finishExam}/>
-                        }
-                    </div>
-                </div>
+            {isStart
+                ? <TestDataPage teacherData={teacherData} testDuration={testDuration} testId={testId}
+                                date={date} isStart={isStart} startExam={startExam}
+                                scoresAll={scoresAll}/>
+                : <TestPage questionsExam={questionsExam} teacherData={teacherData}
+                            startExam={startExam} testDuration={testDuration} scoresAll={scoresAll}
+                            completeReview={completeReview} testId={testId}/>
             }
         </div>
     )

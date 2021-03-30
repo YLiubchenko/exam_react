@@ -1,19 +1,12 @@
 import React from 'react';
 import {TypeAnswer} from "../typesQuestion/TypeAnswer";
-import {Movement} from "../MainPage/Movement";
 
-export function ExamQuestionPage({examQuestions, step, isFinish, setStep, length, finishExam, score, setScore}) {
-
+export function ExamQuestionPage({examQuestions, step, isFinish, colorClasses}) {
     return (
         <div>
             {examQuestions.question}
 
-            <TypeAnswer item={examQuestions} isFinish={isFinish} score={score} setScore={setScore}/>
-
-            {
-                isFinish ||
-                <Movement setStep={setStep} step={step} dataLength={length} finishExam={finishExam}/>
-            }
+            <TypeAnswer item={examQuestions} isFinish={isFinish} colorClasses={colorClasses} step={step}/>
 
         </div>
     )

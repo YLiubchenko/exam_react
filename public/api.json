@@ -3,7 +3,7 @@
     "textData": [
       {
         "id": "1",
-        "question": "1. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -11,7 +11,7 @@
       },
       {
         "id": "2",
-        "question": "2. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -19,7 +19,7 @@
       },
       {
         "id": "3",
-        "question": "3. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -27,7 +27,7 @@
       },
       {
         "id": "4",
-        "question": "4. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -35,7 +35,7 @@
       },
       {
         "id": "5",
-        "question": "5. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -43,7 +43,7 @@
       },
       {
         "id": "6",
-        "question": "6. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -51,7 +51,7 @@
       },
       {
         "id": "7",
-        "question": "7. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -59,7 +59,7 @@
       },
       {
         "id": "8",
-        "question": "8. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -67,7 +67,7 @@
       },
       {
         "id": "9",
-        "question": "9. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -75,7 +75,7 @@
       },
       {
         "id": "10",
-        "question": "10. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -83,7 +83,7 @@
       },
       {
         "id": "11",
-        "question": "11. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -91,7 +91,7 @@
       },
       {
         "id": "12",
-        "question": "12. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -99,7 +99,7 @@
       },
       {
         "id": "13",
-        "question": "13. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -107,7 +107,7 @@
       },
       {
         "id": "14",
-        "question": "14. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -115,7 +115,7 @@
       },
       {
         "id": "15",
-        "question": "15. Are you ready to work?",
+        "question": "Are you ready to work?",
         "answer": [
           "yes"
         ],
@@ -126,8 +126,8 @@
   "radio": {
     "radioData": [
       {
-        "id": "1",
-        "question": "1. Are you ready to work?",
+        "id": "2.1",
+        "question": "Are you ready to work?",
         "answers": [
           "yes",
           "2yes",
@@ -140,8 +140,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "2",
-        "question": "2. Are you ready to work?",
+        "id": "2.2",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -154,8 +154,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "3",
-        "question": "3. Are you ready to work?",
+        "id": "2.3",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -168,8 +168,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "4",
-        "question": "4. Are you ready to work?",
+        "id": "2.4",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -182,8 +182,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "5",
-        "question": "5. Are you ready to work?",
+        "id": "2.5",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -196,8 +196,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "6",
-        "question": "6. Are you ready to work?",
+        "id": "2.6",
+        "question": "Are you ready to work?",
         "answers": [
           "yes",
           "2yes",
@@ -210,8 +210,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "7",
-        "question": "7. Are you ready to work?",
+        "id": "2.7",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -224,8 +224,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "8",
-        "question": "8. Are you ready to work?",
+        "id": "2.8",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -238,8 +238,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "9",
-        "question": "9. Are you ready to work?",
+        "id": "2.9",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -252,8 +252,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "10",
-        "question": "10. Are you ready to work?",
+        "id": "2.10",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -266,8 +266,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "11",
-        "question": "11. Are you ready to work?",
+        "id": "2.11",
+        "question": "Are you ready to work?",
         "answers": [
           "yes",
           "2yes",
@@ -280,8 +280,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "12",
-        "question": "12. Are you ready to work?",
+        "id": "2.12",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -294,8 +294,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "13",
-        "question": "13. Are you ready to work?",
+        "id": "2.13",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -308,8 +308,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "14",
-        "question": "14. Are you ready to work?",
+        "id": "2.14",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -322,8 +322,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "15",
-        "question": "15. Are you ready to work?",
+        "id": "2.15",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -340,9 +340,14 @@
   "checkbox": {
     "checkboxData": [
       {
-        "id": "1",
-        "question": "1. Are you ready to work?",
-        "answers": ["yes", "2yes", "3yes", "4yes"],
+        "id": "3.1",
+        "question": "Are you ready to work?",
+        "answers": [
+          "yes",
+          "2yes",
+          "3yes",
+          "4yes"
+        ],
         "answer": [
           "yes",
           "3yes"
@@ -350,8 +355,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "2",
-        "question": "2. Are you ready to work?",
+        "id": "3.2",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -365,10 +370,10 @@
         "enteredAnswer": []
       },
       {
-        "id": "3",
-        "question": "3. Are you ready to work?",
+        "id": "3.3",
+        "question": "Are you ready to work?",
         "answers": [
-          "1yes",
+          "yes",
           "2yes",
           "3yes",
           "4yes"
@@ -380,8 +385,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "4",
-        "question": "4. Are you ready to work?",
+        "id": "3.4",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -395,8 +400,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "5",
-        "question": "5. Are you ready to work?",
+        "id": "3.5",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -410,8 +415,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "6",
-        "question": "6. Are you ready to work?",
+        "id": "3.6",
+        "question": "Are you ready to work?",
         "answers": [
           "yes",
           "2yes",
@@ -425,8 +430,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "7",
-        "question": "7. Are you ready to work?",
+        "id": "3.7",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -440,10 +445,10 @@
         "enteredAnswer": []
       },
       {
-        "id": "8",
-        "question": "8. Are you ready to work?",
+        "id": "3.8",
+        "question": "Are you ready to work?",
         "answers": [
-          "1yes",
+          "yes",
           "2yes",
           "3yes",
           "4yes"
@@ -455,8 +460,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "9",
-        "question": "9. Are you ready to work?",
+        "id": "3.9",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -470,8 +475,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "10",
-        "question": "10. Are you ready to work?",
+        "id": "3.10",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -485,8 +490,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "11",
-        "question": "11. Are you ready to work?",
+        "id": "3.11",
+        "question": "Are you ready to work?",
         "answers": [
           "yes",
           "2yes",
@@ -500,8 +505,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "12",
-        "question": "12. Are you ready to work?",
+        "id": "3.12",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -515,8 +520,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "13",
-        "question": "13. Are you ready to work?",
+        "id": "3.13",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -530,8 +535,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "14",
-        "question": "14. Are you ready to work?",
+        "id": "3.14",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",
@@ -545,8 +550,8 @@
         "enteredAnswer": []
       },
       {
-        "id": "15",
-        "question": "15. Are you ready to work?",
+        "id": "3.15",
+        "question": "Are you ready to work?",
         "answers": [
           "1yes",
           "2yes",

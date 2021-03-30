@@ -1,14 +1,22 @@
 import React, {useState, useEffect} from "react";
 
-const TimeTest = ({testDuration, setIsFinish}) => {
+const TimeTest = ({testDuration, setIsFinish, isFinish}) => {
     let [time, setTime] = useState(testDuration);
+    let timeDown = '';
+
+    if (!time.hours && !time.minutes && time.seconds) {
+        timeDown = 'timeRunningOut';
+    }
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            if (!time.seconds && !time.minutes && !time.hours) {
-                clearInterval(timer);
-                setIsFinish(true);
 
+        let intervalId = setInterval(() => {
+            if (isFinish) {
+                return clearInterval(intervalId);
+            }
+
+            if (!time.seconds && !time.minutes && !time.hours) {
+                setIsFinish(true);
             }
 
             if (!time.seconds && time.minutes) {
@@ -37,10 +45,13 @@ const TimeTest = ({testDuration, setIsFinish}) => {
                 )
             }
         }, 1000);
+        return () => clearInterval(intervalId);
+
     }, []);
 
+
     return (
-        <div>
+        <div className={timeDown}>
             <span>{String(time.hours).padStart(2, '0')}</span>
             <span>:</span>
             <span>{String(time.minutes).padStart(2, '0')}</span>
@@ -48,6 +59,5 @@ const TimeTest = ({testDuration, setIsFinish}) => {
             <span>{String(time.seconds).padStart(2, '0')}</span>
         </div>
     )
-
 }
 export default TimeTest;

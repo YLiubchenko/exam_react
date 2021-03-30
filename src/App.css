@@ -22,6 +22,18 @@ body {
     position: relative;
 }
 
+.main {
+    width: 100%;
+}
+
+.startPage {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+}
+
 .aside {
     width: 26%;
     height: 100%;
@@ -58,6 +70,38 @@ body {
     border: 1px solid black;
 }
 
+
+.inpText {
+    width: 250px;
+    height: 25px;
+}
+
+.typeAnswer {
+    margin: 0 5px;
+    font-style: italic;
+}
+
+.countBtn {
+    width: 30px;
+    height: 50px;
+    background: white;
+    border: 1px solid grey;
+    border-radius: 3px;
+    margin: 1px;
+}
+
+.active {
+    border: 3px solid #2144fc;
+}
+
+.answerAlready {
+    background: #a2a2a2;
+}
+
+.incompleteAnswer {
+    background: #fdfd70;
+}
+
 .green {
     background: #77ff77;
 }
@@ -66,9 +110,69 @@ body {
     background: #ff6464;
 }
 
-.inpText {
-    width: 250px;
-    height: 25px;
+.orange {
+    background: #ffa264;
 }
 
+.submitTable {
+    display: flex;
+    width: 500px;
+    justify-content: space-around;
+    border: 1px solid black;
+}
+
+.submitCell {
+    width: 50%;
+}
+
+.answerTable {
+    text-align: center;
+}
+
+.numberQuestion {
+    padding-left: 10px;
+}
+
+.timeRunningOut {
+    color: red;
+}
+
+.create {
+    border: 1px solid red;
+}
+
+.incorrect {
+    background: #ff6464;
+}
+
+.incorrect::after {
+    content: 'Deadline cannot be earlier than time limit finished.';
+}
+
+.attempts {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.attempts-result {
+    background: #bfbfbf;
+}
+
+.text-danger {
+    color: red;
+}
+
+.danger {
+    border: 2px solid red;
+}
+
+.testResult {
+    display: flex;
+    border: 1px solid red;
+    width: 300px;
+    justify-content: space-around;
+}
 

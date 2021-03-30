@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Movement({step, setStep, dataLength, finishExam}) {
+export function MovementOnQuestion({step, setStep, dataLength, finishExam}) {
     return (
         <div>
             {step > 0 && <button onClick={() => setStep(step - 1)}>previous</button>}

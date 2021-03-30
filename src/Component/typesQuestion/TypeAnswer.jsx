@@ -2,11 +2,9 @@ import React from 'react';
 import {TextQuestion} from "./TextQuestion";
 import {RadioOrCheckboxQuestion} from "./RadioOrCheckboxQuestion";
 
-export function TypeAnswer({item, isFinish, score, setScore}) {
+export function TypeAnswer({item, isFinish, step, colorClasses}) {
     let {answer, enteredAnswer} = item;
     let type = answer.length === 1 ? 'radio' : 'checkbox';
-
-    console.log(item)
 
     const handleChange = (e) => {
         let value = e.target.value;
@@ -27,29 +25,16 @@ export function TypeAnswer({item, isFinish, score, setScore}) {
         item.enteredAnswer = enteredAnswer;
     }
 
-    const correct = (el) => {
-        let color;
-        if (item.enteredAnswer.includes(el)) {
-            if (item.enteredAnswer.join(', ') === item.answer.join(', ')) {
-                color = 'green';
-                score += 1;
-            } else {
-                color = 'red';
-            }
-        }
-        return color;
-    }
-
     const Type = () => {
         let len = Object.keys(item).length;
 
         if (len === 4) {
-            return <TextQuestion item={item} handleChange={handleChange} isFinish={isFinish} score={score}
-                                 correct={correct}/>
+            return <TextQuestion item={item} handleChange={handleChange} isFinish={isFinish} colorClasses={colorClasses}
+                                 step={step}/>
 
         } else {
-            return <RadioOrCheckboxQuestion item={item} isFinish={isFinish} score={score}
-                                            handleChange={handleChange} type={type} correct={correct}/>
+            return <RadioOrCheckboxQuestion item={item} isFinish={isFinish} handleChange={handleChange} type={type}
+                                            colorClasses={colorClasses} step={step}/>
         }
     }
 
