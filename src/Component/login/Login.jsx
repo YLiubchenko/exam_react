@@ -1,24 +1,16 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import FieldInput from "../FormComponents/FieldComponent";
 
 const LoginForm = ({handleSubmit}) => {
-
-    const requiredField = ({type, label, name, input, meta: {touch, error}}) => {
-        return (
-            <div>
-                <label htmlFor={name}>{label}</label>
-                <input {...input} type={type} name={name} required/>
-            </div>
-        )
-    }
 
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <Field name='email' component={requiredField} type="email" label='Email'/>
+                <Field name='email' component={FieldInput} required={true} type="email" label='Email'/>
             </div>
             <div>
-                <Field name='password' component={requiredField} type="password" label='Password'/>
+                <Field name='password' component={FieldInput} required={true} type="password" label='Password'/>
             </div>
             <button type="submit">Submit</button>
         </form>

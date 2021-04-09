@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import Moodle from "./Moodle";
 import {useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+
+import Moodle from "./Moodle";
+import CreateLink from "./TeacherPage/CreatedTests/CreateTestLink";
 
 function TestsPage({teacherTest, date, scoresAll, setScoresAll, setDate}) {
     let userId = useSelector(state => state.singIn.userId);
@@ -10,13 +11,9 @@ function TestsPage({teacherTest, date, scoresAll, setScoresAll, setDate}) {
     let [testName, setTestName] = useState('');
     let [teacherData, setTeacherData] = useState({});
 
-    console.log(teacherTest)
-
-
     const clickTestPage = async (e) => {
         let nam = e.target.name;
         setTestName(nam);
-        console.log(teacherTest)
         setTeacherData(teacherTest[nam]);
         setDate(new Date());
 
@@ -29,24 +26,11 @@ function TestsPage({teacherTest, date, scoresAll, setScoresAll, setDate}) {
         setIsClick(true);
     }
 
-    console.log(teacherData);
-
-    const ShowTests = () => {
-        return tests.map(testName => {
-            let key = Date.now() + Math.random() * 10;
-            return (
-                <li key={key}>
-                    <Link to={`/tests-page/${key}`} onClick={clickTestPage} name={testName}>{testName}</Link>
-                </li>
-            )
-        })
-    }
-
     return (
         <div>
             <nav>
                 <ul>
-                    {ShowTests()}
+                    <CreateLink testsName={tests} click={clickTestPage} link='tests-page'/>
                 </ul>
             </nav>
 

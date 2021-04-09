@@ -35,7 +35,6 @@ function Moodle({teacherData, date, scoresAll, testName}) {
     }, []);
 
     if (data) {
-        console.log(teacherData.questionsNumber)
         questions = randomQuestions(data, teacherData.questionsNumber);
     }
 

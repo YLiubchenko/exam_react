@@ -1,14 +1,15 @@
 let initialState = {
     isAuth: false,
     userId: null,
-    fullName: null
+    fullName: null,
+    isTeacher: null
 }
 
-export const isSingIn = (isAuth, userId, fullName) => {
+export const isSingIn = (isAuth, userId, fullName, isTeacher) => {
     return {
         type: 'LOGIN',
         payload: {
-            isAuth, userId, fullName
+            isAuth, userId, fullName, isTeacher
         },
     }
 }
@@ -21,7 +22,8 @@ export const setLogin = (state = initialState, action) => {
                 ...state,
                 isAuth: action.payload.isAuth,
                 userId: action.payload.userId,
-                fullName: action.payload.fullName
+                fullName: action.payload.fullName,
+                isTeacher: action.payload.isTeacher,
             };
         default:
             return state;

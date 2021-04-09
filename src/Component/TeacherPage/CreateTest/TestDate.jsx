@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import DateStartEnd from "./DateStartEnd";
-import {randomKeyMap} from "../js/randomKeyMap";
+import {randomKeyMap} from "../../js/randomKeyMap";
 
-export function TestDate({handleClick}) {
+export function TestDate() {
     const [selectedTime, setSelectedTime] = useState(
         {
             time: {},
@@ -26,7 +26,7 @@ export function TestDate({handleClick}) {
     const DurationArr = () => duration.map(time => {
         return (
             <div key={randomKeyMap()}>
-                <DateStartEnd time={time} handleClick={handleClick} fullDate={fullDate} fullTime={fullTime}
+                <DateStartEnd time={time} fullDate={fullDate} fullTime={fullTime}
                               dateChange={dateChange} valueTime={selectedTime}/>
             </div>
         )
@@ -68,11 +68,9 @@ export function TestDate({handleClick}) {
                     Time limit:
                     <div>
                         <input type="number" name={'hour'} placeholder={'Hours'}
-                               onChange={handleClick} min={0} max={23}
-                               onBlur={dateChange}/>
+                               min={0} max={23} onBlur={dateChange}/>
                         <input type="number" name={'minute'} placeholder={'Minutes'}
-                               onChange={handleClick} min={0} max={59}
-                               onBlur={dateChange}/>
+                               min={0} max={59} onBlur={dateChange}/>
                     </div>
                 </label>
             </div>

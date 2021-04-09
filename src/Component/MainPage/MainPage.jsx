@@ -25,6 +25,7 @@ export function MainPage({questions, teacherData, date, data, scoresAll}) {
         setQuestionsExam(arr);
         setIsStart(!isStart);
         evaluateMethod(scoresAll, teacherData)
+
         const res = {
             method: 'PUT',
             headers: {
@@ -34,8 +35,8 @@ export function MainPage({questions, teacherData, date, data, scoresAll}) {
             body: JSON.stringify(scoresAll)
         };
 
-        const response = await fetch('http://localhost:3333/tests-pages/' + userId, res);
-        const result = await response.json();
+        const response = await fetch(`http://localhost:3000/tests-pages/${userId}`, res);
+        return await response.json();
     }
 
     return (

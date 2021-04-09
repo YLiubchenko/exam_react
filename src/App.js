@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
+import {Route, Switch, Redirect} from "react-router-dom";
 
 import './App.css';
-import {Link, Route, Switch, Redirect} from "react-router-dom";
+
 import {TeacherPage} from "./Component/TeacherPage/TeacherPage";
 import {useDispatch, useSelector} from "react-redux";
 import {isSingIn} from "./Component/reducers/login-reducer";
@@ -10,6 +11,8 @@ import RegistrationRedux from "./Component/login/Registration";
 import ResultPage from "./Component/ResultsPage";
 import {typeOfOrObj} from "./Component/MainPage/typeOfOrObj";
 import TestsPage from "./Component/TestsPage";
+import Header from "./Component/Header";
+import Navigation from "./Component/Navigation";
 
 
 function App() {
@@ -19,26 +22,72 @@ function App() {
     const [resultsTest, setResultsTest] = useState({});
     let isAuth = useSelector(state => state.singIn.isAuth);
     let userId = useSelector(state => state.singIn.userId);
-    let fullName = useSelector(state => state.singIn.fullName);
+    let isTeacher = useSelector(state => state.singIn.isTeacher);
     let dispatch = useDispatch();
 
-    const test = {
-        test1: {name: "test1", questionsNumber: "10"},
-        test2: {name: "test2", questionsNumber: "3"},
-        test3: {name: "test3", questionsNumber: "5"},
-        test4: {name: "test4", questionsNumber: "7"}
-    }
+    // const test = {
+    //     test1: {
+    //         name: "test1",
+    //         dateFinish: "2021-04-29",
+    //         dateStart: "2021-03-10",
+    //         evaluationMethod: "bestScore",
+    //         passingScore: "1",
+    //         questionsNumber: "10",
+    //         timeFinish: "10:08",
+    //         timeStart: "10:08",
+    //         minute: 45,
+    //         attemptsAllowed: '3',
+    //     },
+    //     test2: {
+    //         name: "test2",
+    //         dateFinish: "2021-04-29",
+    //         dateStart: "2021-03-10",
+    //         evaluationMethod: "bestScore",
+    //         passingScore: "1",
+    //         questionsNumber: "10",
+    //         timeFinish: "10:08",
+    //         timeStart: "10:08",
+    //         minute: 45,
+    //         attemptsAllowed: '3',
+    //     },
+    //     test3: {
+    //         name: "test3",
+    //         dateFinish: "2021-04-29",
+    //         dateStart: "2021-03-10",
+    //         evaluationMethod: "bestScore",
+    //         passingScore: "1",
+    //         questionsNumber: "10",
+    //         timeFinish: "10:08",
+    //         timeStart: "10:08",
+    //         minute: 45,
+    //         attemptsAllowed: '3',
+    //     },
+    //     test4: {
+    //         name: "test4",
+    //         dateFinish: "2021-04-29",
+    //         dateStart: "2021-03-10",
+    //         evaluationMethod: "bestScore",
+    //         passingScore: "1",
+    //         questionsNumber: "10",
+    //         timeFinish: "10:08",
+    //         timeStart: "10:08",
+    //         minute: 45,
+    //         attemptsAllowed: '3',
+    //     },
+    // }
 
-    const clickTestsPage = () => {
-        setTeacherTest(test)
+    const getAllTest = () => {
+        // setTeacherTest(test)
     }
 
     let lock = sessionStorage.getItem('user');
 
     useEffect(() => {
         if (lock) {
-            let data = JSON.parse(lock);
-            dispatch(isSingIn(!isAuth, data.id, data.fullName));
+            const data = JSON.parse(lock);
+            const {id, fullName, isTeacher} = data;
+
+            dispatch(isSingIn(!isAuth, id, fullName, isTeacher));
         }
     }, []);
 
@@ -62,6 +111,7 @@ function App() {
         }
 
         data = await result.json();
+        const {id, fullName, isTeacher} = data;
         setScoresAll(data);
 
         if (result.status === 201) {
@@ -69,14 +119,9 @@ function App() {
         }
 
         sessionStorage.setItem('user', JSON.stringify(data));
-
-        dispatch(isSingIn(!isAuth, data.id, data.fullName));
+        dispatch(isSingIn(!isAuth, id, fullName, isTeacher));
     }
 
-    const logOut = () => {
-        delete sessionStorage.user;
-        dispatch(isSingIn());
-    }
 
     const clickShowResult = async () => {
         const response = await fetch('http://localhost:3333/results-page/' + userId);
@@ -84,78 +129,50 @@ function App() {
         res.allTests = typeOfOrObj(res.allTests);
         setResultsTest(res.allTests);
         setTeacherTest(test)
-
     }
 
     return (
-        <div>
-            <nav>
-                <ul>
-                    {isAuth &&
-                    <div>
-                        <li>
-                            <Link to={'/teacher-test'}>Teacher page</Link>
-                        </li>
+        <div className='app-wrapper'>
+            <Header isAuth={isAuth}/>
+            <Navigation isAuth={isAuth} isTeacher={isTeacher} clickShowResult={clickShowResult}
+                        getAllTest={getAllTest}/>
 
-                        <li>
-                            <Link to={'/tests-page'} onClick={clickTestsPage}>Tests page</Link>
-                        </li>
+            <div className='app-wrapper-content'>
+                <Switch>
 
-                        <li>
-                            <Link to={'/results-page'} onClick={clickShowResult}>All results</Link>
-                        </li>
-                    </div>
-                    }
-                    <li>
-                        <div>
-                            {isAuth
-                                ? <div>
-                                    <span>{fullName ? fullName : ''}</span>
-                                    /
-                                    <button onClick={logOut}>Log out</button>
-                                </div>
-                                : <div>
-                                    <Link to={'/login'}>Login</Link>
-                                    /
-                                    <Link to={'/registration'}>Registration</Link>
-                                </div>
-                            }
-                        </div>
-                    </li>
+                    <Route exact path='/' render={() => <Redirect to={'/login'}/>}/>
 
-                </ul>
-            </nav>
+                    <Route path={'/teacher-page'} className='container'>
+                        {isTeacher &&
+                        <TeacherPage setTeacherTest={setTeacherTest} teacherTest={teacherTest}/>
+                        }
+                    </Route>
 
-            <Switch>
+                    <Route path={'/tests-page'}>
+                        {isAuth &&
+                        <TestsPage teacherTest={teacherTest} date={date} scoresAll={scoresAll} setDate={setDate}
+                                   setScoresAll={setScoresAll}/>
+                        }
+                    </Route>
 
-                <Route exact path='/' render={() => <Redirect to={'/login'}/>}/>
+                    <Route path={'/results-page'}>
+                        {!isAuth && !isTeacher ||
+                        <ResultPage resultsTest={resultsTest} teacherTest={teacherTest}/>
+                        }
+                    </Route>
 
-                <Route path={'/teacher-test'} className='container'>
-                    <TeacherPage setTeacherTest={setTeacherTest} teacherTest={teacherTest}/>
-                </Route>
+                    <Route path={'/login'}>
+                        {!isAuth &&
+                        <LoginFormRedux onSubmit={submit}/>
+                        }
+                    </Route>
 
-                <Route path={'/tests-page'}>
-                    {isAuth &&
-                    <TestsPage teacherTest={teacherTest} date={date} scoresAll={scoresAll} setDate={setDate}
-                               setScoresAll={setScoresAll}/>
-                    }
-                </Route>
-
-                <Route path={'/results-page'}>
-                    {isAuth &&
-                    <ResultPage resultsTest={resultsTest} teacherTest={teacherTest}/>
-                    }
-                </Route>
-                <Route path={'/login'}>
-                    {!isAuth &&
-                    <LoginFormRedux onSubmit={submit}/>
-                    }
-                </Route>
-                <Route path={'/registration'}>
-                    {!isAuth &&
-                    <RegistrationRedux onSubmit={submit}/>}
-                </Route>
-            </Switch>
+                    <Route path={'/registration'}>
+                        {!isAuth &&
+                        <RegistrationRedux onSubmit={submit}/>}
+                    </Route>
+                </Switch>
+            </div>
         </div>
     )
 }
